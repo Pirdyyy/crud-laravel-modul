@@ -7,26 +7,22 @@ use Illuminate\Support\Facades\File;
 
 class KelasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   // - Mulai -
+   // - ini biar semua file dibuka dengan url + /kelas -
+   // 
     public function index()
     {
         $kelas = Kelas::all();
         return view('kelas.index', compact('kelas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   // - ini fungsinya supaya kamu bisa melihat front end create.blade.php kamu -
     public function create()
     {
         return view('kelas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   // - nah, ini proses dia nerima data yang kamu input, lalu memasukkannya ke dalam database -
     public function store(Request $request)
     {
         $request->validate([
@@ -56,17 +52,13 @@ class KelasController extends Controller
             ->with('success', 'Kelas berhasil ditambahkan');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // - ini biar kamu bisa buka front end edit.blade.php kamu. -
     public function edit(Kelas $kelas)
     {
         return view('kelas.edit', compact('kelas'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // - nah, ini proses dia nge update data yang kamu punya. -
     public function update(Request $request, Kelas $kelas)
     {
         $request->validate([
@@ -110,9 +102,7 @@ class KelasController extends Controller
             ->with('success', 'Kelas berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // - ini proses dimana dia ngehapus data yang kamu punya -
     public function destroy(Kelas $kelas)
     {
         // Hapus gambar
@@ -147,3 +137,4 @@ class KelasController extends Controller
             ->with('success', count($selectedIds) . ' data berhasil dihapus');
     }
 }
+// - Selesai dehh. -
